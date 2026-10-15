@@ -37,10 +37,7 @@ new class extends Component
     protected function rules(): array
     {
         return [
-            'customer_id' => [
-                'required',
-                'exists:customers,id',
-            ],
+            'customer_id' => ['required', 'exists:customers,id'],
             'vehicle_id' => [
                 'required',
                 'exists:vehicles,id',
@@ -62,10 +59,7 @@ new class extends Component
                 'date',
                 'before_or_equal:today',
             ],
-            'keluhan' => [
-                'required',
-                'string',
-            ],
+            'keluhan' => ['required', 'string'],
             'biaya_jasa' => [
                 'required',
                 'numeric',
@@ -197,35 +191,26 @@ new class extends Component
     {
         return [
             'services' => Service::with('vehicle.customer')
-                ->when($this->search, function ($query) {
-                    $query->where(function ($q) {
-                        $q->where(
-                            'keluhan',
-                            'like',
-                            '%' . $this->search . '%'
-                        )
-                        ->orWhere(
-                            'status',
-                            'like',
-                            '%' . $this->search . '%'
-                        )
-                        ->orWhereHas('vehicle', function ($vehicleQuery) {
-                            $vehicleQuery->where(
-                                'plat_nomor',
-                                'like',
-                                '%' . $this->search . '%'
-                            );
-                        })
-                        ->orWhereHas(
-                            'vehicle.customer',
-                            function ($customerQuery) {
+                ->when(trim($this->search) !== '', function ($query) {
+                    $search = trim($this->search);
+
+                    $query->where(function ($q) use ($search) {
+                        $q->where('keluhan', 'like', '%' . $search . '%')
+                            ->orWhere('status', 'like', '%' . $search . '%')
+                            ->orWhereHas('vehicle', function ($vehicleQuery) use ($search) {
+                                $vehicleQuery->where(
+                                    'plat_nomor',
+                                    'like',
+                                    '%' . $search . '%'
+                                );
+                            })
+                            ->orWhereHas('vehicle.customer', function ($customerQuery) use ($search) {
                                 $customerQuery->where(
                                     'nama',
                                     'like',
-                                    '%' . $this->search . '%'
+                                    '%' . $search . '%'
                                 );
-                            }
-                        );
+                            });
                     });
                 })
                 ->latest('tanggal_masuk')
@@ -235,10 +220,7 @@ new class extends Component
 
             'vehicles' => Vehicle::with('customer')
                 ->when($this->customer_id, function ($query) {
-                    $query->where(
-                        'customer_id',
-                        $this->customer_id
-                    );
+                    $query->where('customer_id', $this->customer_id);
                 })
                 ->orderBy('plat_nomor')
                 ->get(),
@@ -252,7 +234,7 @@ new class extends Component
 };
 ?>
 
-<div class="mx-auto max-w-7xl space-y-6">
+<div class="mx-auto w-full max-w-7xl space-y-6">
 
     {{-- Header --}}
     <div class="flex flex-wrap items-center justify-between gap-4">
@@ -577,22 +559,34 @@ new class extends Component
             </span>
         </div>
 
+        {{-- Search yang sudah diperbaiki --}}
         <div class="border-b border-gray-100 p-5">
-            <div class="relative">
-                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-                    class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-                    aria-hidden="true">
-                    <circle cx="11" cy="11" r="7"/>
-                    <path d="m20 20-4-4"/>
-                </svg>
+            <div class="relative w-full max-w-md">
+                <span
+                    class="pointer-events-none absolute inset-y-0 left-0 z-10 flex items-center pl-3"
+                    aria-hidden="true"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 shrink-0 text-gray-400"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <circle cx="11" cy="11" r="7"/>
+                        <path d="m20 20-4-4"/>
+                    </svg>
+                </span>
 
                 <input
                     type="text"
                     wire:model.live.debounce.300ms="search"
                     placeholder="Cari keluhan, status, plat nomor, atau pelanggan..."
-                    class="form-control pl-11"
+                    aria-label="Cari data servis"
+                    class="form-control w-full !pl-11"
                 />
             </div>
         </div>
