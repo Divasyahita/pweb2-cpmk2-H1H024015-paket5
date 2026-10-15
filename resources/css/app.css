@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
 @import 'tailwindcss';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -6,6 +8,233 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Base */
+@layer base {
+    body {
+        font-family: var(--font-sans);
+        background-color: #f8f7fc;
+        color: #27213b;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    input,
+    select,
+    textarea {
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: none;
+        border-color: #8b5cf6 !important;
+        box-shadow: 0 0 0 3px rgb(139 92 246 / 12%);
+    }
+
+    button {
+        transition: all 0.2s ease;
+    }
+
+    button:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+}
+
+/* Selection */
+::selection {
+    background: #ddd6fe;
+    color: #4c1d95;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f8f7fc;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d8d0e8;
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a78bfa;
+}
+
+/* Reusable cards */
+.card {
+    background: #ffffff;
+    border: 1px solid #eee9f7;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgb(55 35 90 / 4%);
+}
+
+/* Buttons */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    padding: 11px 18px;
+    color: white;
+    font-weight: 700;
+    box-shadow: 0 5px 12px rgb(124 58 237 / 18%);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgb(124 58 237 / 25%);
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e9e2f4;
+    border-radius: 12px;
+    background: white;
+    padding: 10px 16px;
+    color: #625675;
+    font-weight: 600;
+}
+
+.btn-secondary:hover {
+    background: #f7f3ff;
+    border-color: #c4b5fd;
+}
+
+.btn-danger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #fff1f2;
+    padding: 8px 12px;
+    color: #e11d48;
+    font-weight: 600;
+}
+
+.btn-danger:hover {
+    background: #ffe4e6;
+}
+
+/* Form controls */
+.form-control {
+    width: 100%;
+    border: 1px solid #e7e1ef;
+    border-radius: 12px;
+    background: #fff;
+    padding: 11px 14px;
+    color: #27213b;
+}
+
+.form-control::placeholder {
+    color: #aaa2b8;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 7px;
+    color: #514563;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* Table */
+.table-modern {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
+}
+
+.table-modern thead th {
+    background: #faf8ff;
+    padding: 14px 18px;
+    color: #837695;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.table-modern tbody td {
+    border-top: 1px solid #f0ecf6;
+    padding: 16px 18px;
+    color: #514563;
+    font-size: 13px;
+}
+
+.table-modern tbody tr {
+    transition: background 0.2s ease;
+}
+
+.table-modern tbody tr:hover {
+    background: #fcfaff;
+}
+
+/* Status badges */
+.badge-status {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 6px 11px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.badge-menunggu {
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+.badge-dikerjakan {
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+.badge-selesai {
+    background: #ecfdf5;
+    color: #047857;
+}
+
+.badge-diambil {
+    background: #f3e8ff;
+    color: #7e22ce;
+}
+
+/* Alert */
+.alert-success {
+    border: 1px solid #bbf7d0;
+    border-radius: 12px;
+    background: #f0fdf4;
+    padding: 14px 16px;
+    color: #166534;
+}
+
+/* Modal/form container */
+.form-panel {
+    border: 1px solid #eee7f8;
+    border-radius: 20px;
+    background: white;
+    padding: 24px;
+    box-shadow: 0 12px 40px rgb(55 35 90 / 8%);
+}
+
+/* Mobile table */
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 16px;
 }
