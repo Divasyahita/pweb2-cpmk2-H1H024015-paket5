@@ -92,19 +92,23 @@ Proyek ini dikembangkan untuk memenuhi tugas Praktikum Pemrograman Web II dengan
 
 ### 1. Dashboard
 
-![Dashboard](screenshots/dashboard.png)
+<img width="959" height="475" alt="Screenshot 2026-10-16 055754" src="https://github.com/user-attachments/assets/4edf451e-8666-4368-a055-039e24990e11" />
+<img width="959" height="477" alt="image" src="https://github.com/user-attachments/assets/e29db285-28bf-476c-895f-a0de15212bd7" />
+
 
 ### 2. Halaman Pelanggan
 
-![Halaman Pelanggan](screenshots/pelanggan.png)
+<img width="959" height="475" alt="image" src="https://github.com/user-attachments/assets/4899ba68-42ab-4bf4-951a-76d6d6ba43f2" />
+<img width="959" height="479" alt="image" src="https://github.com/user-attachments/assets/8c4a9c3e-20a2-4511-a0ec-fa4680c900b8" />
+
 
 ### 3. Halaman Kendaraan
-
-![Halaman Kendaraan](screenshots/kendaraan.png)
+<img width="959" height="474" alt="image" src="https://github.com/user-attachments/assets/e615887b-1919-448e-9997-eadc45cc6f33" />
+<img width="959" height="473" alt="image" src="https://github.com/user-attachments/assets/135ab2ab-ab1d-464d-9b9c-640cb5dd02fa" />
 
 ### 4. Halaman Servis
-
-![Halaman Servis](screenshots/servis.png)
+<img width="959" height="476" alt="image" src="https://github.com/user-attachments/assets/cc49cc05-b790-4ab6-ae77-3dadf3961b54" />
+<img width="959" height="473" alt="image" src="https://github.com/user-attachments/assets/71e3ce49-5014-41ed-a62b-ed1bc71cd0be" />
 
 ## Repository
 
