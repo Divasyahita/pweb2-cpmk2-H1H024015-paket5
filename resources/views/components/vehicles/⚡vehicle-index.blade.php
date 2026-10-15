@@ -36,7 +36,12 @@ new class extends Component
             ],
             'merek' => ['required', 'string', 'max:100'],
             'tipe' => ['required', 'string', 'max:100'],
-            'tahun' => ['required', 'integer', 'min:1900', 'max:' . date('Y')],
+            'tahun' => [
+                'required',
+                'integer',
+                'min:1900',
+                'max:' . date('Y'),
+            ],
         ];
     }
 
@@ -49,6 +54,8 @@ new class extends Component
     public function edit(int $id): void
     {
         $vehicle = Vehicle::findOrFail($id);
+
+        $this->resetValidation();
 
         $this->vehicleId = $vehicle->id;
         $this->customer_id = (string) $vehicle->customer_id;
@@ -127,15 +134,17 @@ new class extends Component
     {
         return [
             'vehicles' => Vehicle::with('customer')
-                ->when($this->search, function ($query) {
-                    $query->where(function ($q) {
-                        $q->where('plat_nomor', 'like', '%' . $this->search . '%')
-                            ->orWhere('merek', 'like', '%' . $this->search . '%')
-                            ->orWhereHas('customer', function ($customerQuery) {
+                ->when(trim($this->search) !== '', function ($query) {
+                    $search = trim($this->search);
+
+                    $query->where(function ($q) use ($search) {
+                        $q->where('plat_nomor', 'like', '%' . $search . '%')
+                            ->orWhere('merek', 'like', '%' . $search . '%')
+                            ->orWhereHas('customer', function ($customerQuery) use ($search) {
                                 $customerQuery->where(
                                     'nama',
                                     'like',
-                                    '%' . $this->search . '%'
+                                    '%' . $search . '%'
                                 );
                             });
                     });
@@ -154,7 +163,7 @@ new class extends Component
 };
 ?>
 
-<div class="mx-auto max-w-7xl space-y-6">
+<div class="mx-auto w-full max-w-7xl space-y-6">
 
     {{-- Header --}}
     <div class="flex flex-wrap items-center justify-between gap-4">
@@ -417,22 +426,34 @@ new class extends Component
             </span>
         </div>
 
+        {{-- Search dengan ikon yang tidak bertumpuk --}}
         <div class="border-b border-gray-100 p-5">
-            <div class="relative">
-                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-                    class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-                    aria-hidden="true">
-                    <circle cx="11" cy="11" r="7"/>
-                    <path d="m20 20-4-4"/>
-                </svg>
+            <div class="relative w-full max-w-md">
+                <span
+                    class="pointer-events-none absolute inset-y-0 left-0 z-10 flex items-center pl-3"
+                    aria-hidden="true"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 shrink-0 text-gray-400"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <circle cx="11" cy="11" r="7"/>
+                        <path d="m20 20-4-4"/>
+                    </svg>
+                </span>
 
                 <input
                     type="text"
                     wire:model.live.debounce.300ms="search"
                     placeholder="Cari plat nomor, merek, atau nama pelanggan..."
-                    class="form-control pl-11"
+                    aria-label="Cari data kendaraan"
+                    class="form-control w-full !pl-11"
                 />
             </div>
         </div>
