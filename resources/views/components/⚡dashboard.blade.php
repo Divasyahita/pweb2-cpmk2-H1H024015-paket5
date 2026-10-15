@@ -17,57 +17,64 @@ new class extends Component {
 };
 ?>
 
-<div class="space-y-8">
+<div class="mx-auto w-full max-w-7xl space-y-8">
 
-    {{-- Sambutan --}}
-    <section class="rounded-3xl bg-gradient-to-br from-violet-600 via-purple-700 to-purple-900 p-7 text-white shadow-lg shadow-purple-200 sm:p-10">
-        <p class="text-sm font-medium text-purple-200">
-            Dashboard
-        </p>
+    {{-- Welcome Banner --}}
+    <section class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-violet-700 via-purple-600 to-violet-500 p-7 text-white shadow-lg shadow-purple-200/60 sm:p-9">
+        <div class="relative z-10 max-w-2xl">
+            <p class="text-sm font-semibold tracking-wide text-purple-200">
+                DASHBOARD
+            </p>
 
-        <h1 class="mt-2 text-2xl font-extrabold sm:text-3xl">
-            Selamat Datang di Bengkelin
-        </h1>
+            <h1 class="mt-3 text-2xl font-extrabold tracking-tight sm:text-3xl">
+                Selamat Datang di Bengkelin
+            </h1>
 
-        <p class="mt-3 max-w-2xl text-sm leading-relaxed text-purple-100 sm:text-base">
-            Kelola pelanggan, kendaraan, dan data servis dalam satu sistem
-            yang praktis dan terorganisasi.
-        </p>
+            <p class="mt-3 max-w-xl text-sm leading-6 text-purple-100 sm:text-base">
+                Kelola pelanggan, kendaraan, dan data servis dalam satu sistem
+                yang praktis dan terorganisasi.
+            </p>
 
-        <a href="{{ route('services.index') }}"
-           class="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-violet-700 transition hover:bg-purple-50">
-            <span>Lihat Data Servis</span>
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 width="18" height="18" viewBox="0 0 24 24"
-                 fill="none" stroke="currentColor" stroke-width="2"
-                 stroke-linecap="round" stroke-linejoin="round"
-                 aria-hidden="true">
-                <path d="M5 12h14"/>
-                <path d="m12 5 7 7-7 7"/>
-            </svg>
-        </a>
+            <a href="{{ route('services.index') }}"
+               class="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-violet-700 shadow-sm transition hover:bg-purple-50">
+                Lihat Data Servis
+
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="18" height="18" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round"
+                     aria-hidden="true">
+                    <path d="M5 12h14"/>
+                    <path d="m12 5 7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+
+        <div class="pointer-events-none absolute -right-12 -top-20 h-64 w-64 rounded-full border-[35px] border-white/10"></div>
+        <div class="pointer-events-none absolute -bottom-28 right-36 h-56 w-56 rounded-full bg-white/5"></div>
     </section>
 
-    {{-- Ringkasan Data --}}
+    {{-- Section Heading --}}
     <section>
         <div class="mb-5">
-            <h2 class="text-lg font-extrabold text-gray-900">
+            <h2 class="text-xl font-extrabold tracking-tight text-gray-900">
                 Ringkasan Data
             </h2>
             <p class="mt-1 text-sm text-gray-500">
-                Informasi jumlah data yang tersimpan di sistem.
+                Gambaran umum data yang tersimpan dalam sistem bengkel.
             </p>
         </div>
 
+        {{-- Statistics Cards --}}
         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
 
-            {{-- Pelanggan --}}
+            {{-- Customers --}}
             <a href="{{ route('customers.index') }}"
-               class="group rounded-2xl border border-purple-100 bg-white p-6 transition hover:-translate-y-1 hover:border-violet-300 hover:shadow-lg hover:shadow-purple-100">
-                <div class="flex items-center justify-between">
-                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-100 text-violet-700">
+               class="group min-w-0 rounded-2xl border border-purple-100 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-violet-300 hover:shadow-lg hover:shadow-purple-100">
+                <div class="flex items-start justify-between gap-4">
+                    <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700">
                         <svg xmlns="http://www.w3.org/2000/svg"
-                             width="25" height="25" viewBox="0 0 24 24"
+                             width="24" height="24" viewBox="0 0 24 24"
                              fill="none" stroke="currentColor" stroke-width="1.8"
                              stroke-linecap="round" stroke-linejoin="round"
                              aria-hidden="true">
@@ -79,10 +86,10 @@ new class extends Component {
                     </div>
 
                     <svg xmlns="http://www.w3.org/2000/svg"
-                         width="20" height="20" viewBox="0 0 24 24"
+                         width="19" height="19" viewBox="0 0 24 24"
                          fill="none" stroke="currentColor" stroke-width="1.8"
                          stroke-linecap="round" stroke-linejoin="round"
-                         class="text-gray-300 transition group-hover:text-violet-600"
+                         class="shrink-0 text-gray-300 transition group-hover:text-violet-600"
                          aria-hidden="true">
                         <path d="M5 12h14"/>
                         <path d="m12 5 7 7-7 7"/>
@@ -92,21 +99,21 @@ new class extends Component {
                 <p class="mt-5 text-sm font-medium text-gray-500">
                     Total Pelanggan
                 </p>
-                <p class="mt-1 text-3xl font-extrabold text-gray-900">
+                <p class="mt-1 text-3xl font-extrabold tracking-tight text-gray-900">
                     {{ $this->stats['customers'] }}
                 </p>
-                <p class="mt-2 text-xs text-violet-600">
+                <p class="mt-2 text-xs font-semibold text-violet-600">
                     Lihat data pelanggan
                 </p>
             </a>
 
-            {{-- Kendaraan --}}
+            {{-- Vehicles --}}
             <a href="{{ route('vehicles.index') }}"
-               class="group rounded-2xl border border-purple-100 bg-white p-6 transition hover:-translate-y-1 hover:border-violet-300 hover:shadow-lg hover:shadow-purple-100">
-                <div class="flex items-center justify-between">
-                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-100 text-violet-700">
+               class="group min-w-0 rounded-2xl border border-purple-100 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-violet-300 hover:shadow-lg hover:shadow-purple-100">
+                <div class="flex items-start justify-between gap-4">
+                    <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700">
                         <svg xmlns="http://www.w3.org/2000/svg"
-                             width="25" height="25" viewBox="0 0 24 24"
+                             width="24" height="24" viewBox="0 0 24 24"
                              fill="none" stroke="currentColor" stroke-width="1.8"
                              stroke-linecap="round" stroke-linejoin="round"
                              aria-hidden="true">
@@ -120,10 +127,10 @@ new class extends Component {
                     </div>
 
                     <svg xmlns="http://www.w3.org/2000/svg"
-                         width="20" height="20" viewBox="0 0 24 24"
+                         width="19" height="19" viewBox="0 0 24 24"
                          fill="none" stroke="currentColor" stroke-width="1.8"
                          stroke-linecap="round" stroke-linejoin="round"
-                         class="text-gray-300 transition group-hover:text-violet-600"
+                         class="shrink-0 text-gray-300 transition group-hover:text-violet-600"
                          aria-hidden="true">
                         <path d="M5 12h14"/>
                         <path d="m12 5 7 7-7 7"/>
@@ -133,21 +140,21 @@ new class extends Component {
                 <p class="mt-5 text-sm font-medium text-gray-500">
                     Total Kendaraan
                 </p>
-                <p class="mt-1 text-3xl font-extrabold text-gray-900">
+                <p class="mt-1 text-3xl font-extrabold tracking-tight text-gray-900">
                     {{ $this->stats['vehicles'] }}
                 </p>
-                <p class="mt-2 text-xs text-violet-600">
+                <p class="mt-2 text-xs font-semibold text-violet-600">
                     Lihat data kendaraan
                 </p>
             </a>
 
-            {{-- Servis --}}
+            {{-- Services --}}
             <a href="{{ route('services.index') }}"
-               class="group rounded-2xl border border-purple-100 bg-white p-6 transition hover:-translate-y-1 hover:border-violet-300 hover:shadow-lg hover:shadow-purple-100">
-                <div class="flex items-center justify-between">
-                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-100 text-violet-700">
+               class="group min-w-0 rounded-2xl border border-purple-100 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-violet-300 hover:shadow-lg hover:shadow-purple-100">
+                <div class="flex items-start justify-between gap-4">
+                    <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700">
                         <svg xmlns="http://www.w3.org/2000/svg"
-                             width="25" height="25" viewBox="0 0 24 24"
+                             width="24" height="24" viewBox="0 0 24 24"
                              fill="none" stroke="currentColor" stroke-width="1.8"
                              stroke-linecap="round" stroke-linejoin="round"
                              aria-hidden="true">
@@ -157,10 +164,10 @@ new class extends Component {
                     </div>
 
                     <svg xmlns="http://www.w3.org/2000/svg"
-                         width="20" height="20" viewBox="0 0 24 24"
+                         width="19" height="19" viewBox="0 0 24 24"
                          fill="none" stroke="currentColor" stroke-width="1.8"
                          stroke-linecap="round" stroke-linejoin="round"
-                         class="text-gray-300 transition group-hover:text-violet-600"
+                         class="shrink-0 text-gray-300 transition group-hover:text-violet-600"
                          aria-hidden="true">
                         <path d="M5 12h14"/>
                         <path d="m12 5 7 7-7 7"/>
@@ -170,10 +177,10 @@ new class extends Component {
                 <p class="mt-5 text-sm font-medium text-gray-500">
                     Total Servis
                 </p>
-                <p class="mt-1 text-3xl font-extrabold text-gray-900">
+                <p class="mt-1 text-3xl font-extrabold tracking-tight text-gray-900">
                     {{ $this->stats['services'] }}
                 </p>
-                <p class="mt-2 text-xs text-violet-600">
+                <p class="mt-2 text-xs font-semibold text-violet-600">
                     Lihat data servis
                 </p>
             </a>
@@ -181,29 +188,34 @@ new class extends Component {
         </div>
     </section>
 
-    {{-- Akses Cepat --}}
-    <section class="rounded-2xl border border-purple-100 bg-white p-6">
-        <h2 class="text-lg font-extrabold text-gray-900">
-            Akses Cepat
-        </h2>
-        <p class="mt-1 text-sm text-gray-500">
-            Pilih menu untuk mulai mengelola data bengkel.
-        </p>
+    {{-- Quick Access --}}
+    <section class="rounded-2xl border border-purple-100 bg-white p-6 shadow-sm sm:p-7">
+        <div>
+            <h2 class="text-lg font-extrabold text-gray-900">
+                Akses Cepat
+            </h2>
+            <p class="mt-1 text-sm text-gray-500">
+                Pilih menu untuk mengelola data bengkel.
+            </p>
+        </div>
 
         <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
             <a href="{{ route('customers.index') }}"
-               class="flex items-center justify-center rounded-xl border border-purple-100 px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-purple-50 hover:text-violet-700">
-                Data Pelanggan
+               class="flex items-center justify-between gap-3 rounded-xl border border-purple-100 px-4 py-4 text-sm font-semibold text-gray-700 transition hover:border-violet-200 hover:bg-purple-50 hover:text-violet-700">
+                <span>Data Pelanggan</span>
+                <span class="text-lg text-violet-600">→</span>
             </a>
 
             <a href="{{ route('vehicles.index') }}"
-               class="flex items-center justify-center rounded-xl border border-purple-100 px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-purple-50 hover:text-violet-700">
-                Data Kendaraan
+               class="flex items-center justify-between gap-3 rounded-xl border border-purple-100 px-4 py-4 text-sm font-semibold text-gray-700 transition hover:border-violet-200 hover:bg-purple-50 hover:text-violet-700">
+                <span>Data Kendaraan</span>
+                <span class="text-lg text-violet-600">→</span>
             </a>
 
             <a href="{{ route('services.index') }}"
-               class="flex items-center justify-center rounded-xl border border-purple-100 px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-purple-50 hover:text-violet-700">
-                Data Servis
+               class="flex items-center justify-between gap-3 rounded-xl border border-purple-100 px-4 py-4 text-sm font-semibold text-gray-700 transition hover:border-violet-200 hover:bg-purple-50 hover:text-violet-700">
+                <span>Data Servis</span>
+                <span class="text-lg text-violet-600">→</span>
             </a>
         </div>
     </section>
