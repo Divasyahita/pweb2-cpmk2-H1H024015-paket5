@@ -1,9 +1,9 @@
-
 <?php
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome');
+Route::livewire('/', 'dashboard')
+    ->name('dashboard');
 
 Route::livewire('/pelanggan', 'customers.customer-index')
     ->name('customers.index');
