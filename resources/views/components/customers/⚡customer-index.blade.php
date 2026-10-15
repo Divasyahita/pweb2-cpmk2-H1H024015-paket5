@@ -107,18 +107,15 @@ new class extends Component
     public function with(): array
     {
         return [
+            'totalCustomers' => Customer::count(),
+
             'customers' => Customer::query()
-                ->when($this->search, function ($query) {
-                    $query->where(function ($q) {
-                        $q->where(
-                            'nama',
-                            'like',
-                            '%' . $this->search . '%'
-                        )->orWhere(
-                            'no_hp',
-                            'like',
-                            '%' . $this->search . '%'
-                        );
+                ->when(trim($this->search) !== '', function ($query) {
+                    $search = trim($this->search);
+
+                    $query->where(function ($q) use ($search) {
+                        $q->where('nama', 'like', '%' . $search . '%')
+                            ->orWhere('no_hp', 'like', '%' . $search . '%');
                     });
                 })
                 ->latest()
@@ -128,7 +125,7 @@ new class extends Component
 };
 ?>
 
-<div class="mx-auto max-w-7xl space-y-6">
+<div class="mx-auto w-full max-w-7xl space-y-6">
 
     {{-- Header halaman --}}
     <div class="flex flex-wrap items-center justify-between gap-4">
@@ -149,6 +146,7 @@ new class extends Component
         </div>
 
         <button
+            type="button"
             wire:click="create"
             class="btn-primary"
         >
@@ -207,7 +205,7 @@ new class extends Component
                 </p>
 
                 <p class="mt-1 text-2xl font-extrabold text-gray-900">
-                    {{ \App\Models\Customer::count() }}
+                    {{ $totalCustomers }}
                 </p>
             </div>
         </div>
@@ -257,7 +255,6 @@ new class extends Component
                     </p>
                 </div>
 
-                {{-- Ikon form --}}
                 <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-purple-50 text-violet-700">
                     <svg xmlns="http://www.w3.org/2000/svg"
                         width="22" height="22" viewBox="0 0 24 24"
@@ -335,6 +332,7 @@ new class extends Component
                     <button
                         type="submit"
                         wire:loading.attr="disabled"
+                        wire:target="save"
                         class="btn-primary"
                     >
                         <span wire:loading.remove wire:target="save">
@@ -380,22 +378,26 @@ new class extends Component
 
         {{-- Pencarian --}}
         <div class="border-b border-gray-100 p-5">
-            <div class="relative">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                    class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-                    width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor"
-                    stroke-width="1.8" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"/>
-                    <path d="m21 21-4.35-4.35"/>
-                </svg>
+            <div class="relative w-full">
+                <div class="pointer-events-none absolute inset-y-0 left-0 z-10 flex items-center pl-4">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="text-gray-400">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.35-4.35"/>
+                    </svg>
+                </div>
 
                 <input
                     type="text"
                     wire:model.live.debounce.300ms="search"
                     placeholder="Cari nama atau nomor HP pelanggan..."
-                    class="form-control pl-11"
+                    class="form-control w-full"
+                    style="padding-left: 3.25rem;"
+                    aria-label="Cari nama atau nomor HP pelanggan"
                 />
             </div>
         </div>
@@ -449,6 +451,7 @@ new class extends Component
                             <td>
                                 <div class="flex items-center gap-2">
                                     <button
+                                        type="button"
                                         wire:click="edit({{ $customer->id }})"
                                         class="rounded-lg bg-violet-50 px-3 py-2 text-xs font-bold text-violet-700 hover:bg-violet-100"
                                     >
@@ -456,9 +459,11 @@ new class extends Component
                                     </button>
 
                                     <button
+                                        type="button"
                                         wire:click="delete({{ $customer->id }})"
                                         wire:confirm="Yakin ingin menghapus pelanggan ini?"
                                         wire:loading.attr="disabled"
+                                        wire:target="delete"
                                         class="rounded-lg bg-red-50 px-3 py-2 text-xs font-bold text-red-600 hover:bg-red-100"
                                     >
                                         Hapus
@@ -469,8 +474,6 @@ new class extends Component
                     @empty
                         <tr>
                             <td colspan="5" class="px-6 py-16 text-center">
-
-                                {{-- Ikon saat data kosong --}}
                                 <div class="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-purple-50 text-violet-700">
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         width="26" height="26" viewBox="0 0 24 24"
