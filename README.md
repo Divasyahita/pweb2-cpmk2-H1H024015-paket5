@@ -1,58 +1,115 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistem Informasi Bengkel Servis Kendaraan
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Deskripsi Proyek
 
-## About Laravel
+Sistem Informasi Bengkel Servis Kendaraan merupakan aplikasi berbasis web yang dirancang untuk membantu pengelolaan data operasional bengkel, mulai dari data pelanggan, kendaraan, hingga riwayat servis. Aplikasi ini memudahkan pengelolaan informasi agar data tersimpan secara terstruktur dan proses pencatatan servis menjadi lebih efisien.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Melalui aplikasi ini, pengguna dapat mengelola data pelanggan, mencatat kendaraan yang dimiliki pelanggan, serta mencatat layanan servis yang dilakukan pada setiap kendaraan. Sistem ini juga mendukung pengelolaan status servis dan informasi biaya servis sesuai dengan fitur yang tersedia pada aplikasi.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Proyek ini dikembangkan untuk memenuhi tugas Praktikum Pemrograman Web II dengan menerapkan konsep CRUD (Create, Read, Update, Delete), relasi antartabel, serta pengembangan aplikasi web menggunakan Laravel dan Livewire.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Identitas
 
-## Learning Laravel
+- **Nama:** Diva Syahita Mawarni
+- **NIM:** H1H024015
+- **Nomor Paket:** 5
+- **Mata Kuliah:** Praktikum Pemrograman Web II
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Teknologi
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Laravel
+- Livewire
+- Blade
+- Tailwind CSS
+- Database sesuai konfigurasi aplikasi
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Cara Instalasi
 
-## Agentic Development
+1. Clone repository:
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+   ```bash
+   git clone URL_REPOSITORY
+   ```
 
-```bash
-composer require laravel/boost --dev
+2. Masuk ke direktori proyek:
 
-php artisan boost:install
-```
+   ```bash
+   cd bengkel-servis-kendaraan-paket5
+   ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+3. Instal dependensi PHP:
 
-## Contributing
+   ```bash
+   composer install
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+4. Salin file konfigurasi lingkungan:
 
-## Code of Conduct
+   ```bash
+   copy .env.example .env
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5. Buat application key:
 
-## Security Vulnerabilities
+   ```bash
+   php artisan key:generate
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+6. Sesuaikan konfigurasi database pada file `.env`.
 
-## License
+7. Jalankan migrasi dan seeder:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+   ```bash
+   php artisan migrate --seed
+   ```
+
+8. Instal dependensi frontend:
+
+   ```bash
+   npm install
+   ```
+
+9. Jalankan aplikasi:
+
+   ```bash
+   npm run build
+   php artisan serve
+   ```
+
+10. Buka `http://127.0.0.1:8000` di browser.
+
+## Daftar Fitur
+
+- Dashboard informasi bengkel.
+- CRUD data pelanggan.
+- CRUD data kendaraan beserta pemiliknya.
+- CRUD transaksi servis.
+- Relasi pelanggan, kendaraan, dan transaksi servis.
+- Pencarian data pelanggan, kendaraan, dan servis.
+- Informasi status servis dan biaya servis.
+
+## Screenshot Aplikasi
+
+### 1. Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+### 2. Halaman Pelanggan
+
+![Halaman Pelanggan](screenshots/pelanggan.png)
+
+### 3. Halaman Kendaraan
+
+![Halaman Kendaraan](screenshots/kendaraan.png)
+
+### 4. Halaman Servis
+
+![Halaman Servis](screenshots/servis.png)
+
+## Repository
+
+URL repository: `https://github.com/Divasyahita/pweb2-cpmk2-H1H024015-paket5.git`
+
+## Video Demonstrasi
+
+URL YouTube: `URL_VIDEO_YOUTUBE`
