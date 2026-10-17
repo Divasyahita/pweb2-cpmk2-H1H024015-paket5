@@ -116,4 +116,4 @@ URL repository: `https://github.com/Divasyahita/pweb2-cpmk2-H1H024015-paket5.git
 
 ## Video Demonstrasi
 
-URL YouTube: `URL_VIDEO_YOUTUBE`
+URL YouTube: `https://youtu.be/QxHXt3_YZPw?si=fu_HZUmrgCEPSXBt`
