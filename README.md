@@ -110,6 +110,14 @@ Proyek ini dikembangkan untuk memenuhi tugas Praktikum Pemrograman Web II dengan
 <img width="959" height="476" alt="image" src="https://github.com/user-attachments/assets/cc49cc05-b790-4ab6-ae77-3dadf3961b54" />
 <img width="959" height="473" alt="image" src="https://github.com/user-attachments/assets/71e3ce49-5014-41ed-a62b-ed1bc71cd0be" />
 
+## Status Pengerjaan Tugas
+
+| Tantangan | Ketentuan | Status |
+|---|---|---|
+| T1 | Plat nomor otomatis diubah menjadi huruf kapital, dirapikan spasinya, dan divalidasi menggunakan regex format plat nomor Indonesia. | Selesai |
+| T2 | Dropdown kendaraan pada form servis bergantung pada pelanggan yang dipilih. Pilihan kendaraan direset saat pelanggan berubah, dan kepemilikan kendaraan divalidasi di server. | Selesai |
+| T3 | Total biaya servis dihitung menggunakan accessor. Status servis hanya dapat maju satu tahap secara berurutan melalui tombol aksi, dan tabel dapat diurutkan berdasarkan tanggal serta total biaya secara naik/turun. | Selesai |
+
 ## Repository
 
 URL repository: [https://github.com/Divasyahita/pweb2-cpmk2-H1H024015-paket5.git](https://github.com/Divasyahita/pweb2-cpmk2-H1H024015-paket5.git)
