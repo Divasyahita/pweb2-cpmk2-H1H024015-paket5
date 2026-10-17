@@ -68,9 +68,9 @@ Pada form servis, mekanisme tersebut membantu memastikan pilihan kendaraan diper
 
 ## D. Link Repository GitHub
 
-[https://github.com/Divasyahita/pweb2-cpmk2-H1H024015-paket5.git]
+[https://github.com/Divasyahita/pweb2-cpmk2-H1H024015-paket5.git](https://github.com/Divasyahita/pweb2-cpmk2-H1H024015-paket5.git)
 
 ## E. Link Video Demonstrasi YouTube
 
-[Tuliskan URL video demonstrasi YouTube di sini.]
+[https://youtu.be/QxHXt3_YZPw?si=fu_HZUmrgCEPSXBt](https://youtu.be/QxHXt3_YZPw?si=fu_HZUmrgCEPSXBt)
 
