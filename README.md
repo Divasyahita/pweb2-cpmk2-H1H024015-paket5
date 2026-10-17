@@ -112,8 +112,8 @@ Proyek ini dikembangkan untuk memenuhi tugas Praktikum Pemrograman Web II dengan
 
 ## Repository
 
-URL repository: `https://github.com/Divasyahita/pweb2-cpmk2-H1H024015-paket5.git`
+URL repository: [https://github.com/Divasyahita/pweb2-cpmk2-H1H024015-paket5.git](https://github.com/Divasyahita/pweb2-cpmk2-H1H024015-paket5.git)
 
 ## Video Demonstrasi
 
-URL YouTube: `https://youtu.be/QxHXt3_YZPw?si=fu_HZUmrgCEPSXBt`
+URL YouTube: [https://youtu.be/QxHXt3_YZPw?si=fu_HZUmrgCEPSXBt](https://youtu.be/QxHXt3_YZPw?si=fu_HZUmrgCEPSXBt)
