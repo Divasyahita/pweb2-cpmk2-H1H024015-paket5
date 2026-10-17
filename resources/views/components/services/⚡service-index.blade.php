@@ -1,3 +1,4 @@
+
 <?php
 
 use App\Models\Customer;
@@ -559,11 +560,11 @@ new class extends Component
             </span>
         </div>
 
-        {{-- Search yang sudah diperbaiki --}}
+        {{-- Search full width --}}
         <div class="border-b border-gray-100 p-5">
-            <div class="relative w-full max-w-md">
+            <div class="relative w-full">
                 <span
-                    class="pointer-events-none absolute inset-y-0 left-0 z-10 flex items-center pl-3"
+                    class="pointer-events-none absolute inset-y-0 left-0 z-10 flex items-center pl-4"
                     aria-hidden="true"
                 >
                     <svg
@@ -586,7 +587,7 @@ new class extends Component
                     wire:model.live.debounce.300ms="search"
                     placeholder="Cari keluhan, status, plat nomor, atau pelanggan..."
                     aria-label="Cari data servis"
-                    class="form-control w-full !pl-11"
+                    class="form-control w-full !pl-12"
                 />
             </div>
         </div>
