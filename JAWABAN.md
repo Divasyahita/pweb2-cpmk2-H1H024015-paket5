@@ -70,7 +70,7 @@ Pada form servis, mekanisme tersebut membantu memastikan pilihan kendaraan diper
 
 [https://github.com/Divasyahita/pweb2-cpmk2-H1H024015-paket5.git](https://github.com/Divasyahita/pweb2-cpmk2-H1H024015-paket5.git)
 
-## E. Link Video Demonstrasi YouTube
+## E. Link Video Demonstrasi 
 
-[https://youtu.be/QxHXt3_YZPw?si=fu_HZUmrgCEPSXBt](https://youtu.be/QxHXt3_YZPw?si=fu_HZUmrgCEPSXBt)
+[https://drive.google.com/file/d/1SECoy8ujq478CZ0So3hWaOHUITGGAkKa/view?usp=drivesdk](https://drive.google.com/file/d/1SECoy8ujq478CZ0So3hWaOHUITGGAkKa/view?usp=drivesdk)
 
